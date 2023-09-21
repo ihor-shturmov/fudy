@@ -6,11 +6,12 @@ import {FormGroup, FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {MatFormFieldModule} from "@angular/material/form-field";
 import {MatInputModule} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
+import {RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-add-manager',
   standalone: true,
-  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule],
+  imports: [CommonModule, FormsModule, ReactiveFormsModule, MatFormFieldModule, MatInputModule, MatButtonModule, RouterLink],
   templateUrl: './add-manager.component.html',
   styleUrls: ['./add-manager.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush

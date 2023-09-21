@@ -11,3 +11,8 @@ form {
   max-width: 600px;
   min-width: 450px;
 }
+
+.button-group {
+  display: flex;
+  justify-content: space-between;
+}

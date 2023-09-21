@@ -24,5 +24,8 @@
     </mat-error>
   </mat-form-field>
 
-  <button mat-button color="accent" type="submit" [disabled]="form.invalid">Add manager</button>
+  <div class="button-group">
+    <button mat-button color="accent" routerLink="/restaurants">Back to restaurants</button>
+    <button mat-button color="accent" type="submit" [disabled]="form.invalid">Add manager</button>
+  </div>
 </form>
