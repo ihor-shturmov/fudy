@@ -1,0 +1,5 @@
+<app-restaurants-list [restaurants]="(restaurants$ | async)!"
+                      [meta]="meta$ | async"
+                      (sort)="onSort($event)"
+                      (changePage)="onChangePage($event)">
+</app-restaurants-list>

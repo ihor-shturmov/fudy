@@ -1,0 +1,28 @@
+<h1>Add manager to restaurant</h1>
+
+<form [formGroup]="form" (ngSubmit)="addManager.emit(form.getRawValue())">
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput placeholder="Write your email" formControlName="email" >
+    <mat-error *ngIf="form.controls.email.hasError('email') && !form.controls.email.hasError('required')" class="email-error">
+      Please enter a valid email address
+    </mat-error>
+    <mat-error *ngIf="form.controls.email.hasError('required')" class="email-error">
+      Email is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input matInput placeholder="Write your password" formControlName="password">
+    <mat-error *ngIf="form.controls.password.hasError('weakPassword')" class="password-error">
+      Your password is too weak, please try to add upper case letters, number and special symbols, also it should be
+      more than 8 chars
+    </mat-error>
+    <mat-error *ngIf="form.controls.password.hasError('required')" class="password-error">
+      Password is <strong>required</strong>
+    </mat-error>
+  </mat-form-field>
+
+  <button mat-button color="accent" type="submit" [disabled]="form.invalid">Add manager</button>
+</form>

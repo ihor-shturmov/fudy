@@ -1,0 +1,41 @@
+<h1>List of restaurants</h1>
+
+<table mat-table [dataSource]="restaurants" matSort (matSortChange)="sort.emit($event)">
+
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name</th>
+    <td mat-cell *matCellDef="let restaurant"> {{restaurant.name}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="address">
+    <th mat-header-cell *matHeaderCellDef> Address</th>
+    <td mat-cell *matCellDef="let restaurant"> {{restaurant.address?.formattedAddress}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="website">
+    <th mat-header-cell *matHeaderCellDef> Website</th>
+    <td mat-cell *matCellDef="let restaurant"> {{restaurant.website ?? 'N/A'}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header> Status</th>
+    <td mat-cell *matCellDef="let restaurant"> {{restaurant.status}} </td>
+  </ng-container>
+
+  <ng-container matColumnDef="action">
+    <th mat-header-cell *matHeaderCellDef></th>
+    <td mat-cell *matCellDef="let restaurant">
+      <mat-icon fontIcon="addPerson" [routerLink]="['add-manager', restaurant.id]" style="cursor: pointer"></mat-icon>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+               [pageSize]="meta?.take || 10"
+               [pageIndex]="(meta?.page && meta!.page - 1) || 0"
+               [length]="meta?.itemCount || 0"
+               (page)="changePage.emit($event)">
+</mat-paginator>
